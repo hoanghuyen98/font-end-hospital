@@ -1,8 +1,31 @@
 import axios from "../axios"
 
 const handleLoginApi = (email, password) => {
-    console.log('da vao chua')
-    return axios.post('/api/login', { email, password }, {headers: {'Access-Control-Allow-Origin': true,} });
+    return axios.post('/api/login', { email, password });
 }
 
-export { handleLoginApi }
+const getAllUsers = (id) => {
+    return axios.get(`/api/get-all-users?id=${id}`);
+}
+
+const createNewUserService = (data) => {
+    return axios.post(`/api/create-new-user`, data);
+}
+
+const deleteUserService = (id) => {
+    return axios.delete(`/api/delete-user`, {data: {
+        id
+    }});
+}
+
+const editUserService = (inputData) => {
+    return axios.put(`/api/edit-user`, inputData);
+}
+
+export { 
+    handleLoginApi, 
+    getAllUsers, 
+    createNewUserService, 
+    deleteUserService,
+    editUserService,
+}
